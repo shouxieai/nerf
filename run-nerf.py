@@ -233,10 +233,10 @@ class NeRF(nn.Module):
         return self.head(x)
 
 
-device = "cuda:1"
+device = "cuda:0"
 width  = 100
 height = 100
-epochs = 3000
+epochs = 30
 batch  = 1
 num_samples = 64
 positional_encoding_dim = 6
@@ -267,7 +267,7 @@ for e in range(epochs):
 
         pbar.set_description(f"{e} / {epochs}, Loss: {loss.item():.6f}")
     
-    if e % 100 == 0:
+    if (e+1) % 2 == 0:
         imgpath = f"imgs/{e:02d}.jpg"
         pthpath = f"ckpt/{e:02d}.pth"
         print(f"Save image {imgpath}")
@@ -276,7 +276,7 @@ for e in range(epochs):
         cv2.imwrite(imgpath, temp_image[..., ::-1])
         torch.save(model.state_dict(), pthpath)
 
-    if e % 1000 == 0:
+    if (e+1) % 10 == 0:
         model.eval()
         imagelist = []
 
