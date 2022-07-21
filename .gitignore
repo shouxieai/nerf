@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+/videos
+/rotate360
+/imgs
+/data
+/ckpt
