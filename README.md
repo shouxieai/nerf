@@ -1,4 +1,4 @@
-# Get Startup
+# Get Start
 1. Run train `python train-nerf.py --half-resolution`
 
 # Run Demo
